@@ -17,7 +17,10 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+
+    //public static void main(String[] args) {launch();}
     public static void main(String[] args) {
-        launch();
+        System.out.println("Starting system.");
+        Mensaje mensaje = new Mensaje("Enzo","Claudia","Hola Claudia. ¿Como estás?");
     }
 }
