@@ -2,12 +2,12 @@ package com.example.buzon;
 
 public class Mensaje {
     String remitente;
-    String emisor;
+    String destinatario;
     String texto;
 
     public Mensaje( String remitente, String emisor, String texto){
         this.remitente= remitente;
-        this.emisor= emisor;
+        this.destinatario= emisor;
         this.texto= texto;
     }
 
@@ -16,7 +16,7 @@ public class Mensaje {
     }
 
     public String getEmisor() {
-        return emisor;
+        return destinatario;
     }
 
     public String getTexto() {
@@ -24,6 +24,6 @@ public class Mensaje {
     }
     @Override
     public String toString(){
-        return "Remitente: "+ remitente + "\n" + "Emisor: " + emisor + "\n"+ "Texto: "+ texto;
+        return "Remitente: "+ remitente + "\n" + "Destinatario: " + destinatario + "\n"+ "Texto: "+ texto;
     }
 }
