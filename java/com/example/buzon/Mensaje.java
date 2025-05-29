@@ -10,7 +10,15 @@ public class Mensaje {
         this.destinatario = destinatario;
         this.texto = texto;
     }
-
+     public String getRemitente(){
+        return remitente;
+    }
+    public String destinatario(){
+        return destinatario;
+    }
+    public String texto (){
+        return texto;
+    }
     @Override
     public String toString() {
         return "Remitente= " + remitente + ", Destinatario= " + destinatario + ", Texto= " + texto;
