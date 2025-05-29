@@ -23,5 +23,7 @@ public class HelloApplication extends Application {
         System.out.println("Starting system.");
         Mensaje mensaje = new Mensaje("Enzo","Claudia","Hola Claudia. ¿Como estás?");
         System.out.println(mensaje);
+
+        launch(args);
     }
 }

@@ -18,3 +18,4 @@ public class Mensaje {
         return this.remitente +" "+ this.destinatario +" "+ this.texto;
     }
 }
+
