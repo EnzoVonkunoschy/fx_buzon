@@ -1,5 +1,8 @@
 package com.example.buzon;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Mensaje {
     private String remitente;
     private String destinatario;
@@ -26,7 +29,7 @@ public class Mensaje {
     @Override
     public String toString() {
         return "Remitente: " + remitente + "\n" +
-                "Emisor: " + destinatario + "\n" +
+                "Destinatario: " + destinatario + "\n" +
                 "Texto: " + texto;
     }
 }
