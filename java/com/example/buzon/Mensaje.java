@@ -10,18 +10,6 @@ public class Mensaje {
         this.destinatario= emisor;
         this.texto= texto;
     }
-
-    public String getRemitente() {
-        return remitente;
-    }
-
-    public String getEmisor() {
-        return destinatario;
-    }
-
-    public String getTexto() {
-        return texto;
-    }
     @Override
     public String toString(){
         return "Remitente: "+ remitente + "\n" + "Destinatario: " + destinatario + "\n"+ "Texto: "+ texto;
