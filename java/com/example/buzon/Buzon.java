@@ -7,8 +7,8 @@ public class Buzon {
 
 
     public boolean hayMensajes(String destinatario){
-        for (Mensaje mensajes : mensajes){
-            if (mensajes.getDestinatario().equals(destinatario)){
+        for (Mensaje mensaje : mensajes){
+            if (mensaje.getDestinatario().equals(destinatario)){
                 return true;
             }
         }
@@ -17,9 +17,9 @@ public class Buzon {
 
     public ArrayList<Mensaje> retirarMensajes(String destinatario){
         ArrayList<Mensaje> mensajesARetirar = new ArrayList<>();
-        for (Mensaje mensajes : mensajes){
-            if (mensajes.getDestinatario().equals(destinatario)){
-                mensajesARetirar.add(mensajes);
+        for (Mensaje mensaje : mensajes){
+            if (mensaje.getDestinatario().equals(destinatario)){
+                mensajesARetirar.add(mensaje);
             }
         }
         return mensajesARetirar;
@@ -30,8 +30,8 @@ public class Buzon {
     }
 
     public void listarMensajes(){
-        for (Mensaje mensajes : mensajes){
-            System.out.println(mensajes);
+        for (Mensaje mensaje : mensajes){
+            System.out.println(mensaje);
         }
     }
 }
