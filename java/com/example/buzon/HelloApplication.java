@@ -23,5 +23,31 @@ public class HelloApplication extends Application {
         System.out.println("Starting system.");
         Mensaje mensaje = new Mensaje("Enzo","Claudia","Hola Claudia. ¿Como estás?");
         System.out.println(mensaje);
+        // Crear instancia del buzón
+        Buzon buzon = new Buzon();
+
+        // Crear mensajes
+        Mensaje m1 = new Mensaje("Enzo", "Claudia", "Hola Claudia. ¿Cómo estás?");
+        Mensaje m2 = new Mensaje("Laura", "Claudia", "Recordá la reunión de mañana.");
+        Mensaje m3 = new Mensaje("Carlos", "Luis", "Pasame el informe cuando puedas.");
+
+        // Recibir mensajes en el buzón
+        buzon.recibirMensaje(m1);
+        buzon.recibirMensaje(m2);
+        buzon.recibirMensaje(m3);
+        // Listar todos los mensajes
+        System.out.println("\n--- Mensajes en el buzón ---");
+        buzon.listarMensajes();
+
+        // Verificar si hay mensajes para Claudia
+        System.out.println("\n¿Hay mensajes para Claudia? " + buzon.hayMensajes("Claudia"));
+
+        // Retirar mensajes para Claudia
+        System.out.println("\n--- Retirando mensajes para Claudia ---");
+        System.out.println(buzon.retirarMensajes("Claudia"));
+
+        // Listar mensajes restantes
+        System.out.println("\n--- Mensajes restantes en el buzón ---");
+        buzon.listarMensajes();
     }
 }
