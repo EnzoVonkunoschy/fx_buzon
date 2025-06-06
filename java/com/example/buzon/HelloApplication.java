@@ -17,36 +17,38 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-
-    //public static void main(String[] args) {launch();}
     public static void main(String[] args) {
         System.out.println("Starting system.");
-        Mensaje mensaje = new Mensaje("Enzo","Claudia","Hola Claudia. ¿Como estás?");
+
+        // Aca creo las personas
+        Persona enzo = new Persona("Enzo", "20-12345678-9");
+        Persona claudia = new Persona("Claudia", "27-87654321-0");
+        Persona laura = new Persona("Laura", "23-22222222-2");
+        Persona carlos = new Persona("Carlos", "24-33333333-3");
+        Persona luis = new Persona("Luis", "21-44444444-4");
+
+        // Creo mensajes con personas
+        Mensaje mensaje = new Mensaje(enzo, claudia, "Hola Claudia. ¿Como estás?");
         System.out.println(mensaje);
-        // Crear instancia del buzón
+
         Buzon buzon = new Buzon();
 
-        // Crear mensajes
-        Mensaje m1 = new Mensaje("Enzo", "Claudia", "Hola Claudia. ¿Cómo estás?");
-        Mensaje m2 = new Mensaje("Laura", "Claudia", "Recordá la reunión de mañana.");
-        Mensaje m3 = new Mensaje("Carlos", "Luis", "Pasame el informe cuando puedas.");
+        Mensaje m1 = new Mensaje(enzo, claudia, "Hola Claudia. ¿Cómo estás?");
+        Mensaje m2 = new Mensaje(laura, claudia, "Recordá la reunión de mañana.");
+        Mensaje m3 = new Mensaje(carlos, luis, "Pasame el informe cuando puedas.");
 
-        // Recibir mensajes en el buzón
         buzon.recibirMensaje(m1);
         buzon.recibirMensaje(m2);
         buzon.recibirMensaje(m3);
-        // Listar todos los mensajes
+
         System.out.println("\n--- Mensajes en el buzón ---");
         buzon.listarMensajes();
 
-        // Verificar si hay mensajes para Claudia
         System.out.println("\n¿Hay mensajes para Claudia? " + buzon.hayMensajes("Claudia"));
 
-        // Retirar mensajes para Claudia
         System.out.println("\n--- Retirando mensajes para Claudia ---");
         System.out.println(buzon.retirarMensajes("Claudia"));
 
-        // Listar mensajes restantes
         System.out.println("\n--- Mensajes restantes en el buzón ---");
         buzon.listarMensajes();
     }
