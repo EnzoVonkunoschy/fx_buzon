@@ -1,21 +1,21 @@
 package com.example.buzon;
 
 public class Mensaje {
-    private String remitente;
-    private String destinatario;
+    private Persona remitente;
+    private Persona destinatario;
     private String texto;
 
-    public Mensaje(String remitente, String destinatario, String texto) {
+    public Mensaje(Persona remitente, Persona destinatario, String texto) {
         this.remitente = remitente;
         this.destinatario = destinatario;
         this.texto = texto;
     }
 
-    public String getDestinatario(){
+    public Persona getDestinatario(){
         return this.destinatario;
     }
 
-    public String getRemitente(){
+    public Persona getRemitente(){
         return this.remitente;
     }
 
