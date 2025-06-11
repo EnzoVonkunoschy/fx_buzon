@@ -6,7 +6,7 @@ public class Buzon {
     ArrayList<Mensaje> mensajes = new ArrayList<>();
 
 
-    public boolean hayMensajes(String destinatario){
+    public boolean hayMensajes(Persona destinatario){
         for (Mensaje mensaje : mensajes){
             if (mensaje.getDestinatario().equals(destinatario)){
                 return true;
@@ -15,7 +15,7 @@ public class Buzon {
         return false;
     }
 
-    public ArrayList<Mensaje> retirarMensajes(String destinatario){
+    public ArrayList<Mensaje> retirarMensajes(Persona destinatario){
         ArrayList<Mensaje> mensajesARetirar = new ArrayList<>();
         for (Mensaje mensaje : mensajes){
             if (mensaje.getDestinatario().equals(destinatario)){
