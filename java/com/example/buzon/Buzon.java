@@ -1,9 +1,14 @@
 package com.example.buzon;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Buzon {
+    private String nombre;
+    private List<Persona> suscriptores = new ArrayList<>();
     ArrayList<Mensaje> mensajes = new ArrayList<>();
+
+    //Deberia haber un constructor que inicialize los atributos
 
 
     public boolean hayMensajes(Persona destinatario){
@@ -33,5 +38,13 @@ public class Buzon {
         for (Mensaje mensaje : mensajes){
             System.out.println(mensaje);
         }
+    }
+
+
+    public void agregarSuscriptor(Persona suscriptor){
+        suscriptores.add(suscriptor);
+    }
+    public void eliminarSuscriptor(Persona suscriptor){
+        suscriptores.remove(suscriptor);
     }
 }
