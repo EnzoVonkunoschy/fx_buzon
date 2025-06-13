@@ -3,6 +3,8 @@ package com.example.buzon;
 import java.util.ArrayList;
 
 public class Buzon {
+    private String nombre;
+    ArrayList<Persona> suscriptores = new ArrayList<>();
     ArrayList<Mensaje> mensajes = new ArrayList<>();
 
 
@@ -34,4 +36,33 @@ public class Buzon {
             System.out.println(mensaje);
         }
     }
+
+    public void agregarSuscriptor(Persona persona) {
+        for (Persona p : suscriptores) {
+            if (p.equals(persona)) {
+                System.out.println(persona.getNombre() + " ya está suscripto.");
+                return;
+            }
+        }
+        suscriptores.add(persona);
+        System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
+    }
+
+    public void eliminarSuscriptor(Persona persona) {
+        suscriptores.remove(persona);
+        System.out.println(persona + " fue eliminado como suscriptor");
+    }
+
+    public void listarSuscriptores() {
+        for (Persona p : suscriptores) {
+            System.out.println(p);
+        }
+    }
+
+    public void ignorarMensaje(Mensaje mensaje) {
+        System.out.println("Mensaje de " + mensaje.getRemitente().getNombre() +
+                " a " + mensaje.getDestinatario().getNombre() + " fue ignorado.");
+
+    }
+
 }

@@ -18,7 +18,7 @@ public class Persona {
     }
 
     public String toString(){
-        return this.nombre + this.cuit;
+        return this.nombre + " " + this.cuit;
     }
 }
 
