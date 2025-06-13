@@ -17,7 +17,6 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-
     //public static void main(String[] args) {launch();}
     public static void main(String[] args) {
         System.out.println("Starting system.");
@@ -25,10 +24,18 @@ public class HelloApplication extends Application {
         Persona p2 = new Persona("Claudia", "45455455");
         Persona p3 = new Persona("Laura", "23233233");
         Persona p4 = new Persona("Carlos", "35355553");
+
         Mensaje mensaje = new Mensaje(p1,p2,"Hola Claudia. ¿Como estás?");
         System.out.println(mensaje);
         // Crear instancia del buzón
         Buzon buzon = new Buzon();
+
+        //agregar suscriptores
+        System.out.println("\n---Lista Suscriptores Agregados---");
+        buzon.agregarSuscriptores(p1);
+        buzon.agregarSuscriptores(p2);
+        buzon.agregarSuscriptores(p3);
+        buzon.agregarSuscriptores(p4);
 
         // Crear mensajes
         Mensaje m1 = new Mensaje(p1, p2, "Hola Claudia. ¿Cómo estás?");
@@ -53,6 +60,16 @@ public class HelloApplication extends Application {
         // Listar mensajes restantes
         System.out.println("\n--- Mensajes restantes en el buzón ---");
         buzon.listarMensajes();
-    }
 
+        //Ignorar mensaje
+        System.out.println("\n--- Ignorando Mensaje ");
+        buzon.ignorarMensaje(m3);
+
+        //eliminamos Suscriptores
+        System.out.println("\n--- Eliminado el  Suscriptor---");
+        buzon.eliminarSuscriptores(p4);
+
+        System.out.println("\n-- Lista de suscriptores actualizada---");
+        buzon.listarSuscriptores();
+    }
 }
