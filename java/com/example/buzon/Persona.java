@@ -18,7 +18,12 @@ public class Persona {
     }
 
     public String toString(){
-        return this.nombre + this.cuit;
+        return this.nombre + " " + this.cuit;
     }
+
+    public boolean equals(Persona persona){
+        return (this.nombre.equals(persona.getNombre()) && this.cuit.equals(persona.getCuit()));
+    }
+
 }
 
