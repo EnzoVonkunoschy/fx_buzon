@@ -1,3 +1,4 @@
+
 package com.example.buzon;
 
 import javafx.application.Application;
@@ -62,11 +63,14 @@ public class HelloApplication extends Application {
         Persona s2 = new Persona("Gabriel", "47455454");
         Persona s3 = new Persona("Lucas", "25234233");
 
+        Mensaje m5 = new Mensaje(s1,s2 ,"dou");
         System.out.println("\n--- Agregados como suscriptor ---");
 
         buzon.agregarSuscriptor(s1);
         buzon.agregarSuscriptor(s2);
         buzon.agregarSuscriptor(s3);
+
+        buzon.recibirMensaje(m5);
 
         System.out.println("\n--- Suscriptor eliminado ---");
 
@@ -77,13 +81,5 @@ public class HelloApplication extends Application {
 
         //Listar suscriptores
         buzon.listarSuscriptores();
-
-        System.out.println("\n--- Mensaje ignorado ---");
-
-        //Mensaje ignorado
-        buzon.ignorarMensaje(ig1);
-
-
     }
-
 }

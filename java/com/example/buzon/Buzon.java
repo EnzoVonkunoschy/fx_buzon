@@ -1,3 +1,4 @@
+
 package com.example.buzon;
 
 import java.util.ArrayList;
@@ -28,7 +29,14 @@ public class Buzon {
     }
 
     public void recibirMensaje(Mensaje mensaje){
-        mensajes.add(mensaje);
+
+        if (suscriptores.contains(mensaje.getDestinatario())) {
+            mensajes.add(mensaje);
+            System.out.println("suscritos a este buzon si es verdadero");
+        } else {
+            System.out.println("Mensaje no añadido");
+        }
+
     }
 
     public void listarMensajes(){
@@ -58,11 +66,4 @@ public class Buzon {
             System.out.println(p);
         }
     }
-
-    public void ignorarMensaje(Mensaje mensaje) {
-        System.out.println("Mensaje de " + mensaje.getRemitente().getNombre() +
-                " a " + mensaje.getDestinatario().getNombre() + " fue ignorado.");
-
-    }
-
 }
