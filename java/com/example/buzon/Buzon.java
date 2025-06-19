@@ -28,7 +28,11 @@ public class Buzon {
     }
 
     public void recibirMensaje(Mensaje mensaje){
-        mensajes.add(mensaje);
+        if (suscriptores.contains(mensaje.getDestinatario())){
+            mensajes.add(mensaje);
+        }else{
+            System.out.println("este destinatario no esta suscripto a este buzon");
+        }
     }
 
     public void listarMensajes(){
@@ -58,11 +62,4 @@ public class Buzon {
             System.out.println(p);
         }
     }
-
-    public void ignorarMensaje(Mensaje mensaje) {
-        System.out.println("Mensaje de " + mensaje.getRemitente().getNombre() +
-                " a " + mensaje.getDestinatario().getNombre() + " fue ignorado.");
-
-    }
-
 }

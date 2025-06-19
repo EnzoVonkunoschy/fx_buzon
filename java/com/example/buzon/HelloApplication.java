@@ -80,9 +80,9 @@ public class HelloApplication extends Application {
 
         System.out.println("\n--- Mensaje ignorado ---");
 
-        //Mensaje ignorado
-        buzon.ignorarMensaje(ig1);
-
+        Persona PNoSuscripta = new Persona("pepe", "454554555");
+        Mensaje m4 = new Mensaje(s1,PNoSuscripta, "Hola pepe, Como estas?");
+        buzon.recibirMensaje(m4);
 
     }
 
