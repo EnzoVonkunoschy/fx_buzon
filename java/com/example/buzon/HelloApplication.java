@@ -68,6 +68,12 @@ public class HelloApplication extends Application {
         buzon.agregarSuscriptor(s2);
         buzon.agregarSuscriptor(s3);
 
+        System.out.println("prueba:");
+        Mensaje m5 = new Mensaje(p1,p2,"decime si sale");
+        Mensaje m6 = new Mensaje(s1,s3,"muy bueno, nos vemos!");
+        buzon.recibirMensaje(m5);
+        buzon.recibirMensaje(m6);
+
         System.out.println("\n--- Suscriptor eliminado ---");
 
         // Eliminar suscriptores

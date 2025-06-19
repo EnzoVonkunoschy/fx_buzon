@@ -28,7 +28,12 @@ public class Buzon {
     }
 
     public void recibirMensaje(Mensaje mensaje){
+        if (suscriptores.contains(mensaje.getDestinatario())){
         mensajes.add(mensaje);
+        System.out.println("mensaje añadido");
+        } else {
+            System.out.println("No es suscriptor");
+        }
     }
 
     public void listarMensajes(){
