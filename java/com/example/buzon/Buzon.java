@@ -27,8 +27,13 @@ public class Buzon {
         return mensajesARetirar;
     }
 
-    public void recibirMensaje(Mensaje mensaje){
-        mensajes.add(mensaje);
+    public void recibirMensaje(Mensaje mensaje) {
+        if (suscriptores.contains(mensaje.getDestinatario())) {
+            mensajes.add(mensaje);
+            System.out.println("suscritos a este buzon si es verdadero");
+        } else {
+            System.out.println("Mensaje no añadido");
+        }
     }
 
     public void listarMensajes(){
