@@ -18,6 +18,8 @@ public class HelloApplication extends Application {
     }
 
 
+
+
     //public static void main(String[] args) {launch();}
     public static void main(String[] args) {
         System.out.println("Starting system.");
@@ -38,8 +40,10 @@ public class HelloApplication extends Application {
         //Mensaje ignorado
         Mensaje ig1 = new Mensaje(p3, p2, "Hola, me podes llamar");
 
+
+
         // Recibir mensajes en el buzón
-        buzon.recibirMensaje(m1);
+
         buzon.recibirMensaje(m2);
         buzon.recibirMensaje(m3);
         // Listar todos los mensajes
@@ -62,13 +66,20 @@ public class HelloApplication extends Application {
         Persona s2 = new Persona("Gabriel", "47455454");
         Persona s3 = new Persona("Lucas", "25234233");
 
+        Mensaje m5 = new Mensaje(s1, s2, "hol");
+
         System.out.println("\n--- Agregados como suscriptor ---");
 
-        buzon.agregarSuscriptor(s1);
+
         buzon.agregarSuscriptor(s2);
         buzon.agregarSuscriptor(s3);
 
+        buzon.recibirMensaje(m5);
+
+
+
         System.out.println("\n--- Suscriptor eliminado ---");
+        
 
         // Eliminar suscriptores
         buzon.eliminarSuscriptor(s2);

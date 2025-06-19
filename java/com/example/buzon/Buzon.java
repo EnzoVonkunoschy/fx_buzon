@@ -1,9 +1,10 @@
 package com.example.buzon;
 
+//import javax.swing.*;
 import java.util.ArrayList;
 
 public class Buzon {
-    private String nombre;
+    //private String nombre;
     ArrayList<Persona> suscriptores = new ArrayList<>();
     ArrayList<Mensaje> mensajes = new ArrayList<>();
 
@@ -28,7 +29,15 @@ public class Buzon {
     }
 
     public void recibirMensaje(Mensaje mensaje){
-        mensajes.add(mensaje);
+
+        if(suscriptores.contains(mensaje.getDestinatario())){
+            mensajes.add(mensaje);
+            System.out.println("Mensaje añadido: persona suscripta");
+
+        }else{
+            System.out.println("Mensaje no añadido: persona no suscripta");
+
+        }
     }
 
     public void listarMensajes(){
