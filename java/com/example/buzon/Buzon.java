@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Buzon {
     ArrayList<Mensaje> mensajes = new ArrayList<>();
-
+    ArrayList<Persona> suscriptores = new ArrayList<>();
 
     public boolean hayMensajes(Persona destinatario){
         for (Mensaje mensaje : mensajes){
@@ -26,12 +26,26 @@ public class Buzon {
     }
 
     public void recibirMensaje(Mensaje mensaje){
-        mensajes.add(mensaje);
+        if (suscriptores.contains(mensaje.getDestinatario())){
+            mensajes.add(mensaje);
+        }else{
+            System.out.println("no suscripto");
+        }
     }
 
     public void listarMensajes(){
         for (Mensaje mensaje : mensajes){
             System.out.println(mensaje);
         }
+    }
+    public void agregarSuscriptores(Persona suscriptor){
+        suscriptores.add(suscriptor);
+    }
+
+    public void mostrarSuscritores() {
+        for (Persona persona : suscriptores) {
+            System.out.println("Nombre: " + persona.getNombre() + ", Cuit: " + persona.getCuit());
+        }
+
     }
 }

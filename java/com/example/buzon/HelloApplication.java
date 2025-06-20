@@ -25,7 +25,7 @@ public class HelloApplication extends Application {
         Persona p2 = new Persona("Claudia", "45455455");
         Persona p3 = new Persona("Laura", "23233233");
         Persona p4 = new Persona("Carlos", "35355553");
-        Mensaje mensaje = new Mensaje(p1,p2,"Hola Claudia. ¿Como estás?");
+        Mensaje mensaje = new Mensaje(p1, p2, "Hola Claudia. ¿Como estás?");
         System.out.println(mensaje);
         // Crear instancia del buzón
         Buzon buzon = new Buzon();
@@ -36,6 +36,7 @@ public class HelloApplication extends Application {
         Mensaje m3 = new Mensaje(p3, p4, "Pasame el informe cuando puedas.");
 
         // Recibir mensajes en el buzón
+
         buzon.recibirMensaje(m1);
         buzon.recibirMensaje(m2);
         buzon.recibirMensaje(m3);
@@ -53,6 +54,11 @@ public class HelloApplication extends Application {
         // Listar mensajes restantes
         System.out.println("\n--- Mensajes restantes en el buzón ---");
         buzon.listarMensajes();
-    }
 
+        buzon.agregarSuscriptores(p1);
+        buzon.agregarSuscriptores(p2);
+
+        buzon.mostrarSuscritores();
+    }
 }
+
