@@ -26,6 +26,8 @@ public class Buzon {
     }
 
     public void recibirMensaje(Mensaje mensaje){
+
+        /* En este metodo de modifica el codigo */
         mensajes.add(mensaje);
     }
 
