@@ -80,21 +80,30 @@ public class HelloApplication extends Application {
 
         System.out.println("\n--- Suscriptor eliminado ---");
         
-
-        // Eliminar suscriptores
         buzon.eliminarSuscriptor(s2);
 
         System.out.println("\n--- Lista de suscriptor ---");
 
-        //Listar suscriptores
         buzon.listarSuscriptores();
 
-        System.out.println("\n--- Mensaje ignorado ---");
 
-        //Mensaje ignorado
-        buzon.ignorarMensaje(ig1);
+        Buzon buzon1 = new Buzon();
+        Buzon buzon2 = new Buzon();
+
+        buzon1.setSiguienteBuzon(buzon2);
+
+        Persona s4 = new Persona("Mariana", "12345678");
+        buzon2.agregarSuscriptor(s4);
+
+        Mensaje m6 = new Mensaje(p1, s4, "Hola Mariana, mensaje de prueba.");
+
+        buzon1.recibirMensaje(m6);
+
+        System.out.println("\n--- Mensajes en Buzón 2 ---");
+        buzon2.listarMensajes();
 
 
     }
+
 
 }
