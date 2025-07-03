@@ -38,6 +38,7 @@ public class Buzon {
 
         }else if(this.siguienteBuzon != null){
 
+            System.out.println("Mensaje transladado: persona no suscripta");
             siguienteBuzon.recibirMensaje(mensaje);
 
         }
@@ -46,7 +47,7 @@ public class Buzon {
 
     public void setSiguenteBuzon(Buzon costa){
 
-        this.siguienteBuzon = siguienteBuzon;
+        this.siguienteBuzon = costa;
 
     }
 
