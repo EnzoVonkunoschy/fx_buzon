@@ -40,12 +40,19 @@ public class HelloApplication extends Application {
         //Mensaje ignorado
         Mensaje ig1 = new Mensaje(p3, p2, "Hola, me podes llamar");
 
+        Buzon buzon2 = new Buzon();
+        buzon.setSiguienteBuzon(buzon2);
+        buzon2.setSiguienteBuzon(null);
 
+        buzon2.agregarSuscriptor(p1);
+        buzon2.agregarSuscriptor(p2);
+        buzon2.agregarSuscriptor(p3);
+        buzon2.agregarSuscriptor(p4);
 
         // Recibir mensajes en el buzón
-
+        /*buzon.recibirMensaje(m1);
         buzon.recibirMensaje(m2);
-        buzon.recibirMensaje(m3);
+        buzon.recibirMensaje(m3);*/
         // Listar todos los mensajes
         System.out.println("\n--- Mensajes en el buzón ---");
         buzon.listarMensajes();
@@ -70,7 +77,7 @@ public class HelloApplication extends Application {
 
         System.out.println("\n--- Agregados como suscriptor ---");
 
-
+        buzon.agregarSuscriptor(s1);
         buzon.agregarSuscriptor(s2);
         buzon.agregarSuscriptor(s3);
 
@@ -94,7 +101,13 @@ public class HelloApplication extends Application {
         //Mensaje ignorado
         buzon.ignorarMensaje(ig1);
 
+        //Buzon Gateaway
 
+
+        Mensaje mensaje4 = new Mensaje(s1, p1, "hello");
+        buzon.recibirMensaje(mensaje4);
+        System.out.println("comprobacion si se guardo en el buzon2");
+        buzon2.listarMensajes();
     }
 
 }
