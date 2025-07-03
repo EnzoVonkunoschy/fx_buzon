@@ -7,6 +7,9 @@ public class Buzon {
     //private String nombre;
     ArrayList<Persona> suscriptores = new ArrayList<>();
     ArrayList<Mensaje> mensajes = new ArrayList<>();
+    //crear siguienteBuzon
+    private Buzon siguienteBuzon;
+
 
 
     public boolean hayMensajes(Persona destinatario){
@@ -35,7 +38,11 @@ public class Buzon {
             mensajes.add(mensaje);
             System.out.println("Mensaje añadido: persona suscripta");
 
-        }else{
+        } else if (siguienteBuzon != null) {
+            System.out.println("Mensaje no correspondiente, se envía al siguiente");
+            siguienteBuzon.recibirMensaje(mensaje);
+
+        } else{
             System.out.println("Mensaje no añadido: persona no suscripta");
 
         }
@@ -75,5 +82,12 @@ public class Buzon {
                 " a " + mensaje.getDestinatario().getNombre() + " fue ignorado.");
 
     }
+    public void setSiguienteBuzon(Buzon siguienteBuzon){
+        this.siguienteBuzon = siguienteBuzon;
+    }
+    public Buzon getSiguienteBuzon(){
+        return siguienteBuzon;
+    }
+
 
 }

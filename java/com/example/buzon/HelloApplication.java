@@ -31,6 +31,17 @@ public class HelloApplication extends Application {
         System.out.println(mensaje);
         // Crear instancia del buzón
         Buzon buzon = new Buzon();
+        Buzon buzonJocoli = new Buzon();
+        Buzon buzonAlvear = new Buzon();
+        //Buzon siguientBuzon = new Buzon();
+        buzon.setSiguienteBuzon(buzonJocoli);
+        buzon.setSiguienteBuzon(buzonAlvear);
+
+        Persona p6 = new Persona("Flavia", "2876543219");
+        buzonJocoli.agregarSuscriptor(p6);
+        Mensaje m8 = new Mensaje(p2, p6, "soy de san rafael");
+        buzonAlvear.recibirMensaje(m8);
+
 
         // Crear mensajes
         Mensaje m1 = new Mensaje(p1, p2, "Hola Claudia. ¿Cómo estás?");
