@@ -29,8 +29,14 @@ public class HelloApplication extends Application {
         Persona p4 = new Persona("Carlos", "35355553");
         Mensaje mensaje = new Mensaje(p1,p2,"Hola Claudia. ¿Como estás?");
         System.out.println(mensaje);
+
+
         // Crear instancia del buzón
         Buzon buzon = new Buzon();
+
+
+
+
 
         // Crear mensajes
         Mensaje m1 = new Mensaje(p1, p2, "Hola Claudia. ¿Cómo estás?");
@@ -39,6 +45,18 @@ public class HelloApplication extends Application {
 
         //Mensaje ignorado
         Mensaje ig1 = new Mensaje(p3, p2, "Hola, me podes llamar");
+
+
+
+        //nueva actualizacion
+        Buzon buzon02 = new Buzon();
+        buzon.setSiguienteBuzon(buzon02);
+        buzon02.setSiguienteBuzon(null);
+
+        buzon02.agregarSuscriptor(p1);
+        buzon02.agregarSuscriptor(p2);
+        buzon02.agregarSuscriptor(p3);
+        buzon02.agregarSuscriptor(p4);
 
 
 
@@ -94,6 +112,8 @@ public class HelloApplication extends Application {
         //Mensaje ignorado
         buzon.ignorarMensaje(ig1);
 
+
+        System.out.println("prueba de que funca = ");
 
     }
 
