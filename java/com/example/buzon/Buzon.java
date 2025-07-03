@@ -47,7 +47,7 @@ public class Buzon {
 
     public void listarMensajes(){
         for (Mensaje mensaje : mensajes){
-            System.out.println(mensaje); 
+            System.out.println(mensaje);
         }
     }
 
