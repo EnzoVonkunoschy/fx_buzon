@@ -7,6 +7,7 @@ public class Buzon {
     //private String nombre;
     ArrayList<Persona> suscriptores = new ArrayList<>();
     ArrayList<Mensaje> mensajes = new ArrayList<>();
+    private Buzon Buzonsiguiente;
 
 
     public boolean hayMensajes(Persona destinatario){
@@ -35,8 +36,10 @@ public class Buzon {
             mensajes.add(mensaje);
             System.out.println("Mensaje añadido: persona suscripta");
 
-        }else{
-            System.out.println("Mensaje no añadido: persona no suscripta");
+        }else if (Buzonsiguiente != null){
+            System.out.println("Mensaje reenviado: persona no suscripta");
+            Buzonsiguiente.recibirMensaje(mensaje);
+
 
         }
 
@@ -44,7 +47,7 @@ public class Buzon {
 
     public void listarMensajes(){
         for (Mensaje mensaje : mensajes){
-            System.out.println(mensaje);
+            System.out.println(mensaje); 
         }
     }
 
@@ -76,4 +79,9 @@ public class Buzon {
 
     }
 
+    public void setBuzonSiguiente(Buzon buzon2) {
+        this.Buzonsiguiente = buzon2;
+
+    }
 }
+

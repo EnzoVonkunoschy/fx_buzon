@@ -27,15 +27,33 @@ public class HelloApplication extends Application {
         Persona p2 = new Persona("Claudia", "45455455");
         Persona p3 = new Persona("Laura", "23233233");
         Persona p4 = new Persona("Carlos", "35355553");
+        Persona p9 = new Persona("Carla", "44444444");
+
         Mensaje mensaje = new Mensaje(p1,p2,"Hola Claudia. ¿Como estás?");
         System.out.println(mensaje);
         // Crear instancia del buzón
         Buzon buzon = new Buzon();
+        Buzon buzon2 = new Buzon();
 
+
+        buzon.setBuzonSiguiente(buzon2);
+        buzon2.setBuzonSiguiente(null);
+
+        buzon2.agregarSuscriptor(p1);
+        buzon2.agregarSuscriptor(p2);
+        buzon2.agregarSuscriptor(p3);
+        buzon2.agregarSuscriptor(p4);
+        buzon2.agregarSuscriptor(p9);
+
+        Mensaje m4 = new Mensaje(p1,p9, "Holaaaaa!");
+        buzon.recibirMensaje(m4);
+        buzon.listarMensajes();
+        buzon2.listarMensajes();
         // Crear mensajes
         Mensaje m1 = new Mensaje(p1, p2, "Hola Claudia. ¿Cómo estás?");
         Mensaje m2 = new Mensaje(p3, p2, "Recordá la reunión de mañana.");
         Mensaje m3 = new Mensaje(p3, p4, "Pasame el informe cuando puedas.");
+
 
         //Mensaje ignorado
         Mensaje ig1 = new Mensaje(p3, p2, "Hola, me podes llamar");
@@ -49,6 +67,9 @@ public class HelloApplication extends Application {
         // Listar todos los mensajes
         System.out.println("\n--- Mensajes en el buzón ---");
         buzon.listarMensajes();
+
+        System.out.println("Mensajes del buzon 2");
+        buzon2.listarMensajes();
 
         // Verificar si hay mensajes para Claudia
         System.out.println("\n¿Hay mensajes para Claudia? " + buzon.hayMensajes(p2));
