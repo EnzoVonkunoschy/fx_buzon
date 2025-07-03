@@ -46,6 +46,19 @@ public class HelloApplication extends Application {
 
         buzon.recibirMensaje(m2);
         buzon.recibirMensaje(m3);
+        Buzon tulumaya = new Buzon();
+        Buzon costadearaujo = new Buzon();
+        //Conecta ambos buzones
+        tulumaya.setSiguienteBuzon(costadearaujo);
+        // Agregar el suscriptor a costa
+        Persona destino = new Persona ("Roberto", "41534126776");
+        System.out.println("\n + destino");
+        costadearaujo.agregarSuscriptor(destino);
+
+        //Envia mensaje al buzon tulumaya
+        Mensaje s9 =new Mensaje(p3, destino, "Hola...");
+        tulumaya.recibirMensaje(s9);
+
         // Listar todos los mensajes
         System.out.println("\n--- Mensajes en el buzón ---");
         buzon.listarMensajes();
@@ -79,7 +92,7 @@ public class HelloApplication extends Application {
 
 
         System.out.println("\n--- Suscriptor eliminado ---");
-        
+
 
         // Eliminar suscriptores
         buzon.eliminarSuscriptor(s2);
