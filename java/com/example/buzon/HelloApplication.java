@@ -46,6 +46,19 @@ public class HelloApplication extends Application {
 
         buzon.recibirMensaje(m2);
         buzon.recibirMensaje(m3);
+        Buzon tulumaya = new Buzon();
+        Buzon costadearaujo = new Buzon();
+        //Conecta buzones
+        tulumaya.setSiguienteBuzon(costadearaujo);
+        // Agregar susprictores al buzon costa
+        Persona destino = new Persona ("Flavia", "12345679301");
+        System.out.println("\n + destino");
+        costadearaujo.agregarSuscriptor(destino);
+
+        //Envia mensaje al buzon tulumaya
+        Mensaje s9 =new Mensaje(p3, destino, "Hola...");
+        tulumaya.recibirMensaje(s9);
+
         // Listar todos los mensajes
         System.out.println("\n--- Mensajes en el buzón ---");
         buzon.listarMensajes();
