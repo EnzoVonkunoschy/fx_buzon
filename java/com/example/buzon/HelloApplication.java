@@ -31,6 +31,9 @@ public class HelloApplication extends Application {
         System.out.println(mensaje);
         // Crear instancia del buzón
         Buzon buzon = new Buzon();
+        Buzon buzonCosta = new Buzon();
+
+        buzon.setSiguienteBuzon(buzonCosta);
 
         // Crear mensajes
         Mensaje m1 = new Mensaje(p1, p2, "Hola Claudia. ¿Cómo estás?");
@@ -44,8 +47,8 @@ public class HelloApplication extends Application {
 
         // Recibir mensajes en el buzón
 
-        buzon.recibirMensaje(m2);
-        buzon.recibirMensaje(m3);
+
+
         // Listar todos los mensajes
         System.out.println("\n--- Mensajes en el buzón ---");
         buzon.listarMensajes();
@@ -70,9 +73,15 @@ public class HelloApplication extends Application {
 
         System.out.println("\n--- Agregados como suscriptor ---");
 
+        buzon.recibirMensaje(m2);
+        buzonCosta.recibirMensaje(m3);
+        buzon.recibirMensaje(m5);
 
         buzon.agregarSuscriptor(s2);
         buzon.agregarSuscriptor(s3);
+
+        buzonCosta.agregarSuscriptor(p1);
+        buzonCosta.agregarSuscriptor(p2);
 
         buzon.recibirMensaje(m5);
 
