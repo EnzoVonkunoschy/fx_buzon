@@ -73,13 +73,36 @@ public class HelloApplication extends Application {
 
         buzon.agregarSuscriptor(s2);
         buzon.agregarSuscriptor(s3);
-
         buzon.recibirMensaje(m5);
 
+        System.out.println("\n---------- SIGUIENTE BUZON----------");
 
+        //Usamos siguientebuzon
+        Buzon tulumaya = new Buzon();
+        Buzon costa = new Buzon();
+
+        tulumaya.setSiguienteBuzon(costa);//conectar los buzones
+
+        //Agregar suscriptores de Costa
+        Persona destino = new Persona("Ana Maria","123456789");
+        Persona destinoT = new Persona("Marcelo", "234565678");
+        System.out.println("\n"+ destino);
+
+        System.out.println("\n Probando suscriptor costa");
+        costa.agregarSuscriptor(destino);
+        tulumaya.agregarSuscriptor(destinoT);
+
+        System.out.println("\n Mensaje ");
+        //mandamos un mensaje a Tulumaya para que lo reenvie
+        Mensaje s9 = new Mensaje(s3, destino, "Hola..");
+
+        tulumaya.recibirMensaje(s9);
+
+        //prueba
+        System.out.println(m3);
+        tulumaya.recibirMensaje(m3);
 
         System.out.println("\n--- Suscriptor eliminado ---");
-        
 
         // Eliminar suscriptores
         buzon.eliminarSuscriptor(s2);

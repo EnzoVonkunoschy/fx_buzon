@@ -7,7 +7,15 @@ public class Buzon {
     //private String nombre;
     ArrayList<Persona> suscriptores = new ArrayList<>();
     ArrayList<Mensaje> mensajes = new ArrayList<>();
+    private Buzon siguienteBuzon; //agregar lo que pide en uml
 
+    //metodos para definir y obtener del siguiente buzon
+    public void setSiguienteBuzon(Buzon siguiente){
+        this.siguienteBuzon = siguiente;
+    }
+    public Buzon getSiguienteBuzon(){
+        return siguienteBuzon;
+    }
 
     public boolean hayMensajes(Persona destinatario){
         for (Mensaje mensaje : mensajes){
@@ -31,12 +39,15 @@ public class Buzon {
     public void recibirMensaje(Mensaje mensaje){
 
 
-        if(suscriptores.contains(mensaje.getDestinatario())){
+        if(suscriptores.contains(mensaje.getDestinatario())) {
             mensajes.add(mensaje);
-            System.out.println("Mensaje añadido: persona suscripta");
+            System.out.println("\n Mensaje añadido: persona suscripta");
 
-        }else{
-            System.out.println("Mensaje no añadido: persona no suscripta");
+        }else if (siguienteBuzon !=null){
+            System.out.println("\n Destinatario NO encontrado en este Buzon Tulumaya, reenviamos al Buzon Costa: ");
+            siguienteBuzon.recibirMensaje(mensaje);// pasa al siguiente
+        }else {
+            System.out.println("Mensaje no añadido: persona no suscripta y no hay mas buzones");
 
         }
 
