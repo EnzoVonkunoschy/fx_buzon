@@ -7,7 +7,16 @@ public class Buzon {
     //private String nombre;
     ArrayList<Persona> suscriptores = new ArrayList<>();
     ArrayList<Mensaje> mensajes = new ArrayList<>();
+    private Buzon siguienteBuzon;// para poder apuntar a otro buzon
 
+    //metodo para obtener el siguiente buzon
+    public void setSiguienteBuzon(Buzon siguienteBuzon) {
+        this.siguienteBuzon = siguienteBuzon;
+    }
+
+    public Buzon getSiguienteBuzon() {
+        return siguienteBuzon;
+    }
 
     public boolean hayMensajes(Persona destinatario){
         for (Mensaje mensaje : mensajes){
@@ -31,10 +40,12 @@ public class Buzon {
     public void recibirMensaje(Mensaje mensaje){
 
 
-        if(suscriptores.contains(mensaje.getDestinatario())){
+        if(suscriptores.contains(mensaje.getDestinatario())) {
             mensajes.add(mensaje);
             System.out.println("Mensaje añadido: persona suscripta");
-
+        } else if (siguienteBuzon != null) {
+            System.out.println("Destinatario no encontrado en este buzón, se reenvía al siguiente buzón");
+            siguienteBuzon.recibirMensaje(mensaje);
         }else{
             System.out.println("Mensaje no añadido: persona no suscripta");
 

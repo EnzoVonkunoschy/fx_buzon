@@ -75,6 +75,19 @@ public class HelloApplication extends Application {
         buzon.agregarSuscriptor(s3);
 
         buzon.recibirMensaje(m5);
+        System.out.println("\n ------Buzon siguiente------");
+
+        // usamos siguiente buzon
+        Buzon tulumaya = new Buzon();
+        Buzon corralitos = new Buzon();
+
+        tulumaya.setSiguienteBuzon(corralitos);
+
+        //agregamos suscriptor para ejemplificar
+        Persona s4 = new Persona("Tomas", "11223344556");
+        corralitos.agregarSuscriptor(s4);
+        Mensaje m6 = new Mensaje(s3,s4, "que tal" );
+        tulumaya.recibirMensaje(m6);
 
 
 
