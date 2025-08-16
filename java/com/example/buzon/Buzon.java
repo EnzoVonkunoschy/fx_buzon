@@ -40,9 +40,13 @@ public class Buzon {
 
 
     public void listarMensajes() {
+        System.out.println("--- Buzón -------------------");
         for (Mensaje mensaje : mensajes) {
-            System.out.println(mensaje);
+            System.out.println("Destinatario: "+mensaje.getDestinatario()+
+                    "Remitente: "+mensaje.getRemitente()+
+                    "Texto:     "+mensaje.getTexto());
         }
+        System.out.println("----------------------------");
     }
 
     public void agregarSuscriptor(Persona persona) {
