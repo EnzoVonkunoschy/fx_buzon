@@ -72,15 +72,19 @@ public class HelloApplication extends Application {
             buzon1.recibirMensaje(colMensajes.get(i));
         }
 
+        System.out.println("Buzon1-----------");
         buzon1.listarMensajes();
+        System.out.println("Buzon2------------");
         buzon2.listarMensajes();
 
         for(int i=0 ; i<colPersona.size() ; i++){
             buzon1.retirarMensajes(colPersona.get(i));
             buzon2.retirarMensajes(colPersona.get(i));
         }
-        
+        System.out.println("(buzones luego de retirar los mensajes)");
+        System.out.println("Buzon1-----------");
         buzon1.listarMensajes();
+        System.out.println("Buzon2------------");
         buzon2.listarMensajes();
     }
 
