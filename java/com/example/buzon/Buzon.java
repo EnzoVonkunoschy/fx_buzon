@@ -1,6 +1,7 @@
 package com.example.buzon;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Buzon {
     ArrayList<Persona> suscriptores = new ArrayList<>();
@@ -18,9 +19,17 @@ public class Buzon {
 
     public ArrayList<Mensaje> retirarMensajes(Persona destinatario) {
         ArrayList<Mensaje> mensajesARetirar = new ArrayList<>();
-        for (Mensaje mensaje : mensajes) {
+       // for (Mensaje mensaje : mensajes) {
+       //     if (mensaje.getDestinatario().equals(destinatario)) {
+       //         mensajesARetirar.add(mensaje);
+       //     }
+       // }
+        Iterator<Mensaje> iterador = mensajes.iterator();
+        while (iterador.hasNext()) {
+            Mensaje mensaje = iterador.next();
             if (mensaje.getDestinatario().equals(destinatario)) {
-                mensajesARetirar.add(mensaje);
+                mensajesARetirar.add(mensaje);// agrega el mensaje a la lista retorno
+                iterador.remove();//eliminamos de la lista
             }
         }
         return mensajesARetirar;
