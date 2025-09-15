@@ -86,6 +86,11 @@ public class HelloApplication extends Application {
         buzon1.listarMensajes();
         System.out.println("Buzon2------------");
         buzon2.listarMensajes();
+
+        //paso del mensaje al siguiente buzon
+        buzon1.setSiguienteBuzon(buzon2);
+
+        System.out.println("Cantidad de buzones recorridos: " + Buzon.getTotalBuzones());
     }
 
 }
