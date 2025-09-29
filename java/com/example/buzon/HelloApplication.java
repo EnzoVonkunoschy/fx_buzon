@@ -124,6 +124,7 @@ public class HelloApplication extends Application {
         for(int i=0 ; i<colBuz.size() ; i++){
             for(int j=0 ; j<colPer.size() ; j++){
                 colBuz.get(i).agregarSuscriptor(colPer.get(j));
+                colBuz.get(i).agregarSuscriptor(colPer.get(j));
             }
         }
 
