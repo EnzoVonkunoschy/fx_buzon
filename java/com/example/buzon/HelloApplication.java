@@ -20,13 +20,12 @@ public class HelloApplication extends Application {
     }
 
 
-
-
     //public static void main(String[] args) {launch();}
     public static void main(String[] args) {
         System.out.println("Starting system.");
+        testSuscriptorUnico();
 
-        // Instancio personas
+        /* Instancio personas
         Persona p1 = new Persona("Enzo", "38388399");
         Persona p2 = new Persona("Claudia", "45455455");
         Persona p3 = new Persona("Laura", "23233233");
@@ -100,6 +99,39 @@ public class HelloApplication extends Application {
 
 
         System.out.println("Cantidad de buzones recorridos: " + Buzon.getTotalBuzones());
-    }
+    }*/
 
+
+
+    }
+    public static void testSuscriptorUnico () {
+        System.out.println("running suscriptor Unico");
+
+        Persona p0 = new Persona("Bart Simpson","1234567890");
+        Persona p1 = new Persona("Lisa Simpson","1234567891");
+        Persona p2 = new Persona("Meg Simpson","1234567891");
+
+        ArrayList<Persona> colPer = new ArrayList<>();
+        colPer.add(p0);
+        colPer.add(p1);
+        colPer.add(p2);
+
+        ArrayList<Buzon> colBuz = new ArrayList<>();
+        for(int i=0 ; i<3 ; i++){
+            colBuz.add(new Buzon());
+        }
+
+        for(int i=0 ; i<colBuz.size() ; i++){
+            for(int j=0 ; j<colPer.size() ; j++){
+                colBuz.get(i).agregarSuscriptor(colPer.get(j));
+            }
+        }
+
+        for(int i=0 ; i<colBuz.size() ; i++){
+            System.out.println("Buzon: "+i);
+            colBuz.get(i).listarSuscriptores();
+        }
+
+    }
 }
+
