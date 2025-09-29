@@ -46,6 +46,7 @@ public class HelloApplication extends Application {
         Mensaje m1 = new Mensaje(p2, p3, "Hola Claudia. ¿Cómo estás?");
         Mensaje m2 = new Mensaje(p3, p4, "Recordá la reunión de mañana.");
         Mensaje m3 = new Mensaje(p4, p1, "Pasame el informe cuando puedas.");
+        Mensaje m4 = new Mensaje(p4, p5, "..este mensaje se va a perder...");
 
         // Coleccion de Mensajes
         ArrayList<Mensaje> colMensajes = new ArrayList<>();
@@ -53,21 +54,26 @@ public class HelloApplication extends Application {
         colMensajes.add(m1);
         colMensajes.add(m2);
         colMensajes.add(m3);
+        colMensajes.add(m4);
 
 
         // Crear instancia del buzón
         Buzon buzon1 = new Buzon();
         Buzon buzon2 = new Buzon();
+        Buzon buzon3 = new Buzon();
 
         buzon1.agregarSuscriptor(p1);
         buzon1.agregarSuscriptor(p2);
 
         buzon2.agregarSuscriptor(p3);
         buzon2.agregarSuscriptor(p4);
+        //buzon3.agregarSuscriptor(p5);
 
         buzon1.setSiguienteBuzon(buzon2);
+        buzon2.setSiguienteBuzon(buzon3);
+        buzon3.setSiguienteBuzon(buzon1);
 
-        // Recibir mensajes en el buzón
+        // Recibir mensajes en el buzón1
         for(int i=0 ; i<colMensajes.size() ; i++){
             buzon1.recibirMensaje(colMensajes.get(i));
         }
@@ -76,19 +82,22 @@ public class HelloApplication extends Application {
         buzon1.listarMensajes();
         System.out.println("Buzon2------------");
         buzon2.listarMensajes();
+        System.out.println("Buzon3------------");
+        buzon3.listarMensajes();
 
         for(int i=0 ; i<colPersona.size() ; i++){
             buzon1.retirarMensajes(colPersona.get(i));
             buzon2.retirarMensajes(colPersona.get(i));
+            buzon3.retirarMensajes(colPersona.get(i));
         }
         System.out.println("(buzones luego de retirar los mensajes)");
         System.out.println("Buzon1-----------");
         buzon1.listarMensajes();
         System.out.println("Buzon2------------");
         buzon2.listarMensajes();
+        System.out.println("Buzon3------------");
+        buzon3.listarMensajes();
 
-        //paso del mensaje al siguiente buzon
-        buzon1.setSiguienteBuzon(buzon2);
 
         System.out.println("Cantidad de buzones recorridos: " + Buzon.getTotalBuzones());
     }
