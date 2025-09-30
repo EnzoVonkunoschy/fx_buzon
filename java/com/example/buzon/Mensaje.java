@@ -4,7 +4,15 @@ public class Mensaje {
     private Persona remitente;
     private Persona destinatario;
     private String texto;
+    private int contadorBuzones = 0; // atributo de contador
 
+    public void incrementarContador() {
+        contadorBuzones++;
+    }
+
+    public int getContadorBuzones() {
+        return contadorBuzones;
+    }
     public Mensaje(Persona remitente, Persona destinatario, String texto) {
         this.remitente = remitente;
         this.destinatario = destinatario;
