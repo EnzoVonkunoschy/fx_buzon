@@ -23,7 +23,6 @@ public class Persona {
         return this.nombre + " " + this.cuit;
     }
 
-    // Getter y Setter del flag
     public boolean isSubActivo() {
         return subActivo;
     }
