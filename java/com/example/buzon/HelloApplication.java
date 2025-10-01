@@ -121,10 +121,17 @@ public class HelloApplication extends Application {
             colBuz.add(new Buzon());
         }
 
+        colBuz.get(1).agregarSuscriptor(p1);
+        colBuz.get(1).agregarSuscriptor(p1);
+        colBuz.get(2).agregarSuscriptor(p2);
+        colBuz.get(2).agregarSuscriptor(p2);
+        System.out.println("-------------");
+
         for(int i=0 ; i<colBuz.size() ; i++){
             for(int j=0 ; j<colPer.size() ; j++){
                 colBuz.get(i).agregarSuscriptor(colPer.get(j));
                 colBuz.get(i).agregarSuscriptor(colPer.get(j));
+
             }
         }
 

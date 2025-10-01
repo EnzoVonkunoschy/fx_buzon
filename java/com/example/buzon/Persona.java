@@ -3,6 +3,8 @@ package com.example.buzon;
 public class Persona {
     private String nombre;
     private String cuit;
+    private boolean subActivo = false;
+
 
     public Persona(String nombre, String cuit){
         this.nombre = nombre;
@@ -19,6 +21,15 @@ public class Persona {
 
     public String toString(){
         return this.nombre + " " + this.cuit;
+    }
+
+    // Getter y Setter del flag
+    public boolean isSubActivo() {
+        return subActivo;
+    }
+
+    public void subActivo(boolean subActivo) {
+        this.subActivo = subActivo;
     }
 }
 
