@@ -118,19 +118,17 @@ public class HelloApplication extends Application {
 
         ArrayList<Buzon> colBuz = new ArrayList<>();
         for(int i=0 ; i<3 ; i++){
-            colBuz.add(new Buzon());
+            colBuz.add(new Buzon(1)); // cada buzón con capacidad 1
         }
 
-        for(int i=0 ; i<colBuz.size() ; i++){
-            for(int j=0 ; j<colPer.size() ; j++){
-                colBuz.get(i).agregarSuscriptor(colPer.get(j));
-                colBuz.get(i).agregarSuscriptor(colPer.get(j));
-            }
+
+        for (int i = 0; i < colPer.size(); i++) {
+            colBuz.get(i).agregarSuscriptor(colPer.get(i));
         }
 
+
         for(int i=0 ; i<colBuz.size() ; i++){
-            System.out.println("Buzon: "+i);
-            colBuz.get(i).listarSuscriptores();
+            colBuz.get(i).listarSuscriptores(i);
         }
 
     }

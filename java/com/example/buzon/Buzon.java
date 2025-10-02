@@ -8,7 +8,12 @@ public class Buzon {
     ArrayList<Mensaje> mensajes = new ArrayList<>();
     private Buzon siguienteBuzon; // ✅ Nuevo atributo
     private static int totalBuzones = 0; //contadoor de buzones
+    private int capacidad;
 
+    public Buzon(int capacidad) {
+        this.capacidad = capacidad;
+        totalBuzones++;
+    }
     public Buzon() {
         totalBuzones++; // cada vez que se crea un buzón se incrementa
     }
@@ -27,11 +32,11 @@ public class Buzon {
 
     public ArrayList<Mensaje> retirarMensajes(Persona destinatario) {
         ArrayList<Mensaje> mensajesARetirar = new ArrayList<>();
-       // for (Mensaje mensaje : mensajes) {
-       //     if (mensaje.getDestinatario().equals(destinatario)) {
-       //         mensajesARetirar.add(mensaje);
-       //     }
-       // }
+        // for (Mensaje mensaje : mensajes) {
+        //     if (mensaje.getDestinatario().equals(destinatario)) {
+        //         mensajesARetirar.add(mensaje);
+        //     }
+        // }
         Iterator<Mensaje> iterador = mensajes.iterator();
         while (iterador.hasNext()) {
             Mensaje mensaje = iterador.next();
@@ -68,26 +73,31 @@ public class Buzon {
     }
 
     public void agregarSuscriptor(Persona persona) {
-        for (Persona p : suscriptores) {
-            if (p.equals(persona)) {
-                System.out.println(persona.getNombre() + " ya está suscripto.");
-                return;
-            }
+        if (persona.isSuscripto()) {
+            System.out.println(persona.getNombre() + " ya está suscripto en otro buzón.");
+            return;
         }
         suscriptores.add(persona);
+        persona.setSuscripto(true);
         System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
     }
 
     public void eliminarSuscriptor(Persona persona) {
-        suscriptores.remove(persona);
-        System.out.println(persona + " fue eliminado como suscriptor");
+        if (suscriptores.remove(persona)) {
+            persona.setSuscripto(false);
+            System.out.println(persona.getNombre() + " fue eliminado como suscriptor");
+        } else {
+            System.out.println(persona.getNombre() + " no estaba en este buzón");
+        }
     }
 
-    public void listarSuscriptores() {
+    public void listarSuscriptores(int numeroBuzon) {
+        System.out.println("Buzon: " + numeroBuzon);
         for (Persona p : suscriptores) {
             System.out.println(p);
         }
     }
+
 
     public void ignorarMensaje(Mensaje mensaje) {
         System.out.println("Mensaje de " + mensaje.getRemitente().getNombre() +
