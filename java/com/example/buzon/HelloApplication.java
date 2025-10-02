@@ -131,7 +131,7 @@ public class HelloApplication extends Application {
         for(int i=0 ; i<colBuz.size() ; i++){
             System.out.println("Buzon: "+i);
             colBuz.get(i).listarSuscriptores();
-        }
+        } 
 
     }
 }
