@@ -115,16 +115,24 @@ public class HelloApplication extends Application {
         colPer.add(p0);
         colPer.add(p1);
         colPer.add(p2);
-
         ArrayList<Buzon> colBuz = new ArrayList<>();
         for(int i=0 ; i<3 ; i++){
             colBuz.add(new Buzon());
         }
 
-        for(int i=0 ; i<colBuz.size() ; i++){
-            for(int j=0 ; j<colPer.size() ; j++){
-                colBuz.get(i).agregarSuscriptor(colPer.get(j));
-                colBuz.get(i).agregarSuscriptor(colPer.get(j));
+        for(int i = 0; i < colPer.size(); i++){
+            Persona persona = colPer.get(i);
+            Buzon buzon = colBuz.get(i);
+            boolean pasado = false;
+
+            for(Buzon buzonActual : colBuz){
+                if (buzonActual.suscriptores.contains(persona)) {
+                    pasado = true;
+                    break;
+                }
+            }
+            if (!pasado) {
+                buzon.agregarSuscriptor(persona);
             }
         }
 
