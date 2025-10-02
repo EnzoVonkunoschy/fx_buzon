@@ -107,9 +107,9 @@ public class HelloApplication extends Application {
     public static void testSuscriptorUnico () {
         System.out.println("running suscriptor Unico");
 
-        Persona p0 = new Persona("Bart Simpson","1234567890");
-        Persona p1 = new Persona("Lisa Simpson","1234567891");
-        Persona p2 = new Persona("Meg Simpson","1234567891");
+        Persona p0 = new Persona("Bart Simpson","1234567890",false);
+        Persona p1 = new Persona("Lisa Simpson","1234567891",false);
+        Persona p2 = new Persona("Meg Simpson","1234567891",false);
 
         ArrayList<Persona> colPer = new ArrayList<>();
         colPer.add(p0);
@@ -123,8 +123,14 @@ public class HelloApplication extends Application {
 
         for(int i=0 ; i<colBuz.size() ; i++){
             for(int j=0 ; j<colPer.size() ; j++){
-                colBuz.get(i).agregarSuscriptor(colPer.get(j));
-                colBuz.get(i).agregarSuscriptor(colPer.get(j));
+                if(colPer.get(j).getSuscrito()==false){
+                    colBuz.get(i).agregarSuscriptor(colPer.get(j));
+                    colPer.get(j).setSuscribido(true);
+                    colBuz.get(i).agregarSuscriptor(colPer.get(j));
+                }else {
+                    System.out.println("Fallo "+colPer.get(j).getNombre());
+                }
+
             }
         }
 
