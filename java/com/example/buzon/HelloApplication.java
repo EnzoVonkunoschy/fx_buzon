@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class HelloApplication extends Application {
     @Override
@@ -120,11 +121,21 @@ public class HelloApplication extends Application {
         for(int i=0 ; i<3 ; i++){
             colBuz.add(new Buzon());
         }
+        // 🔑 Set global para controlar quién ya fue asignado
+        HashSet<Persona> asignados = new HashSet<>();
 
         for(int i=0 ; i<colBuz.size() ; i++){
             for(int j=0 ; j<colPer.size() ; j++){
-                colBuz.get(i).agregarSuscriptor(colPer.get(j));
-                colBuz.get(i).agregarSuscriptor(colPer.get(j));
+                //colBuz.get(i).agregarSuscriptor(colPer.get(j));
+                //colBuz.get(i).agregarSuscriptor(colPer.get(j));
+                Persona persona = colPer.get(j);
+                // si ya fue asignado, no lo agrego
+                if (asignados.contains(persona)) {
+                    System.out.println(persona.getNombre() + " ya pertenece a otro buzón.");
+                } else {
+                    colBuz.get(i).agregarSuscriptor(persona);
+                    asignados.add(persona); // lo marco como asignado
+                }
             }
         }
 
