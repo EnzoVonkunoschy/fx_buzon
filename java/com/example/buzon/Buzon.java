@@ -8,6 +8,7 @@ public class Buzon {
     ArrayList<Mensaje> mensajes = new ArrayList<>();
     private Buzon siguienteBuzon; // ✅ Nuevo atributo
     private static int totalBuzones = 0; //contadoor de buzones
+    private int cantidad;
 
     public Buzon() {
         totalBuzones++; // cada vez que se crea un buzón se incrementa
@@ -68,13 +69,23 @@ public class Buzon {
     }
 
     public void agregarSuscriptor(Persona persona) {
+        // Verificar si la persona ya tiene un buzón asignado
+        if (persona.getBuzon() != null) {
+            System.out.println(persona.getNombre() + " ya está suscripto al buzón " + persona.getNombre());
+            return;
+        }
+
+        // Verificar si ya está en este buzón
         for (Persona p : suscriptores) {
             if (p.equals(persona)) {
-                System.out.println(persona.getNombre() + " ya está suscripto.");
+                System.out.println(persona.getNombre() + " ya está suscripto a este buzón.");
                 return;
             }
         }
+
+        // Agregar al buzón
         suscriptores.add(persona);
+        persona.setBuzon(this); // asignar el buzón a la persona
         System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
     }
 
