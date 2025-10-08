@@ -119,20 +119,10 @@ public class HelloApplication extends Application {
         for(int i=0 ; i<3 ; i++){
             colBuz.add(new Buzon());
         }
-
-        for(int i = 0; i < colPer.size(); i++){
-            Persona persona = colPer.get(i);
-            Buzon buzon = colBuz.get(i);
-            boolean pasado = false;
-
-            for(Buzon buzonActual : colBuz){
-                if (buzonActual.suscriptores.contains(persona)) {
-                    pasado = true;
-                    break;
-                }
-            }
-            if (!pasado) {
-                buzon.agregarSuscriptor(persona);
+        for(int i=0 ; i<colBuz.size() ; i++){
+            for(int j=0 ; j<colPer.size() ; j++){
+                colBuz.get(i).agregarSuscriptor(colPer.get(j));
+                colBuz.get(i).agregarSuscriptor(colPer.get(j));
             }
         }
 
@@ -143,4 +133,3 @@ public class HelloApplication extends Application {
 
     }
 }
-

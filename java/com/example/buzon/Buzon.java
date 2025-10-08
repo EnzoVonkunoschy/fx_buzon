@@ -27,11 +27,11 @@ public class Buzon {
 
     public ArrayList<Mensaje> retirarMensajes(Persona destinatario) {
         ArrayList<Mensaje> mensajesARetirar = new ArrayList<>();
-       // for (Mensaje mensaje : mensajes) {
-       //     if (mensaje.getDestinatario().equals(destinatario)) {
-       //         mensajesARetirar.add(mensaje);
-       //     }
-       // }
+        // for (Mensaje mensaje : mensajes) {
+        //     if (mensaje.getDestinatario().equals(destinatario)) {
+        //         mensajesARetirar.add(mensaje);
+        //     }
+        // }
         Iterator<Mensaje> iterador = mensajes.iterator();
         while (iterador.hasNext()) {
             Mensaje mensaje = iterador.next();
@@ -68,14 +68,13 @@ public class Buzon {
     }
 
     public void agregarSuscriptor(Persona persona) {
-        for (Persona p : suscriptores) {
-            if (p.equals(persona)) {
-                System.out.println(persona.getNombre() + " ya está suscripto.");
-                return;
-            }
+        if (persona.isSuscripto()) {
+            System.out.println(persona.getNombre() + " ya está suscripto.");
+        } else {
+            suscriptores.add(persona);
+            persona.suscripto(true);
+            System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
         }
-        suscriptores.add(persona);
-        System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
     }
 
     public void eliminarSuscriptor(Persona persona) {
@@ -103,4 +102,3 @@ public class Buzon {
         return siguienteBuzon;
     }
 }
-
