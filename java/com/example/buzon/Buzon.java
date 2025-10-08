@@ -68,17 +68,15 @@ public class Buzon {
     }
 
     public void agregarSuscriptor(Persona persona) {
-        for (Persona p : suscriptores) {
-            if (p.equals(persona)) {
-                System.out.println(persona.getNombre() + " ya está suscripto.");
+            if (!persona.marcarSuscripcion()) {
+                System.out.println(persona.getNombre() + " ya está suscripto en otro buzón.");
                 return;
             }
+            suscriptores.add(persona);
+            System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
         }
-        suscriptores.add(persona);
-        System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
-    }
 
-    public void eliminarSuscriptor(Persona persona) {
+        public void eliminarSuscriptor(Persona persona) {
         suscriptores.remove(persona);
         System.out.println(persona + " fue eliminado como suscriptor");
     }

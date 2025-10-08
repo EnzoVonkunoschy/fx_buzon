@@ -3,10 +3,20 @@ package com.example.buzon;
 public class Persona {
     private String nombre;
     private String cuit;
+    private boolean suscripto = false;
 
     public Persona(String nombre, String cuit){
         this.nombre = nombre;
         this.cuit = cuit;
+    }
+
+    public boolean isSuscripto() {
+        return suscripto;
+    }
+    public boolean marcarSuscripcion() {
+        if (suscripto) return false;
+        suscripto = true;
+        return true;
     }
 
     public String getNombre(){
