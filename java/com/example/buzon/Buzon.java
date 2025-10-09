@@ -8,6 +8,9 @@ public class Buzon {
     ArrayList<Mensaje> mensajes = new ArrayList<>();
     private Buzon siguienteBuzon; // ✅ Nuevo atributo
     private static int totalBuzones = 0; //contadoor de buzones
+    // ✅ CAMBIO: Lista estática para llevar el registro global de TODOS los suscriptores
+    private static final ArrayList<Persona> todosLosSuscriptores = new ArrayList<>();
+
 
     public Buzon() {
         totalBuzones++; // cada vez que se crea un buzón se incrementa
@@ -68,14 +71,26 @@ public class Buzon {
     }
 
     public void agregarSuscriptor(Persona persona) {
-        for (Persona p : suscriptores) {
-            if (p.equals(persona)) {
-                System.out.println(persona.getNombre() + " ya está suscripto.");
-                return;
-            }
+        //for (Persona p : suscriptores) {
+        //    if (p.equals(persona)) {
+        //        System.out.println(persona.getNombre() + " ya está suscripto.");
+        //        return;
+        //    }
+        //}
+        //  VALIDACIÓN LOCAL (sustituye el bucle for)
+        if (suscriptores.contains(persona)) {
+            System.out.println(persona.getNombre() + " ya está suscripto.");
+            return;
+        }
+        // VALIDACIÓN GLOBAL
+        if (Buzon.todosLosSuscriptores.contains(persona)) {
+            System.out.println("❌ ERROR: " + persona.getNombre() + " ya está suscripto en otro buzón del sistema y no puede ser agregado.");
+            return; // Detiene la suscripción
         }
         suscriptores.add(persona);
-        System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
+        Buzon.todosLosSuscriptores.add(persona);// REGISTRO GLOBAL: Se añade a la lista ESTÁTICA
+        System.out.println("✅ " + persona.getNombre() + " fue agregado como suscriptor.");
+
     }
 
     public void eliminarSuscriptor(Persona persona) {
