@@ -9,6 +9,7 @@ public class Buzon {
     private Buzon siguienteBuzon; // ✅ Nuevo atributo
     private static int totalBuzones = 0; //contadoor de buzones
 
+
     public Buzon() {
         totalBuzones++; // cada vez que se crea un buzón se incrementa
     }
@@ -74,7 +75,19 @@ public class Buzon {
                 return;
             }
         }
+        // Verifica que la persona no esté suscripta a otro buzón.
+        if (persona.getBuzonUnico() != null) {
+
+            // Si la condición da null, la persona no está suscrita a ningún buzón.
+            // Si la condición da != null, la persona si está suscrita a un buzón
+            return;
+
+        }
+
         suscriptores.add(persona);
+        persona.setBuzonUnico(this);
+        //esta linea actualiza el atributo para que la persona tenga un nuevo buzon.
+
         System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
     }
 
@@ -102,5 +115,7 @@ public class Buzon {
     public Buzon getSiguienteBuzon() {
         return siguienteBuzon;
     }
+
+
 }
 
