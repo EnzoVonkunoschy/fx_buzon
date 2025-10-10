@@ -2,12 +2,20 @@ package com.example.buzon;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+//
+import java.util.List;
 
 public class Buzon {
     ArrayList<Persona> suscriptores = new ArrayList<>();
     ArrayList<Mensaje> mensajes = new ArrayList<>();
     private Buzon siguienteBuzon; // ✅ Nuevo atributo
     private static int totalBuzones = 0; //contadoor de buzones
+
+    //LO agregue yo
+
+    private static List<Persona> suscriptoresGlobales = new ArrayList<>();
+
+    // hasta aca
 
     public Buzon() {
         totalBuzones++; // cada vez que se crea un buzón se incrementa
@@ -67,7 +75,7 @@ public class Buzon {
         System.out.println("----------------------------");
     }
 
-    public void agregarSuscriptor(Persona persona) {
+   /* public void agregarSuscriptor(Persona persona) {
         for (Persona p : suscriptores) {
             if (p.equals(persona)) {
                 System.out.println(persona.getNombre() + " ya está suscripto.");
@@ -77,11 +85,44 @@ public class Buzon {
         suscriptores.add(persona);
         System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
     }
+*/
+
+
+    //Lo agregue
+
+    public void agregarSuscriptor(Persona persona) {
+        // Verificar si la persona ya está suscripta en otro buzón
+        if (suscriptoresGlobales.contains(persona)) {
+            System.out.println(persona.getNombre() + " ya esta suscripto .");
+            return;
+        }
+        suscriptores.add(persona);
+        suscriptoresGlobales.add(persona); // Agregar a la lista global
+        System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
+    }
+ // Hasta acaa
+
+
+
+
+    /* public void eliminarSuscriptor(Persona persona) {
+        suscriptores.remove(persona);
+        System.out.println(persona + " fue eliminado como suscriptor");
+    } */
+
+
+    //LO agregue
+
 
     public void eliminarSuscriptor(Persona persona) {
         suscriptores.remove(persona);
+        suscriptoresGlobales.remove(persona); // Eliminar de la lista global
         System.out.println(persona + " fue eliminado como suscriptor");
     }
+
+
+
+    //Hasta aca
 
     public void listarSuscriptores() {
         for (Persona p : suscriptores) {
@@ -102,5 +143,7 @@ public class Buzon {
     public Buzon getSiguienteBuzon() {
         return siguienteBuzon;
     }
+
+
 }
 

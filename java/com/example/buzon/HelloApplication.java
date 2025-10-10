@@ -23,7 +23,8 @@ public class HelloApplication extends Application {
     //public static void main(String[] args) {launch();}
     public static void main(String[] args) {
         System.out.println("Starting system.");
-        testSuscriptorUnico();
+       testSuscriptorUnico();
+
 
         /* Instancio personas
         Persona p1 = new Persona("Enzo", "38388399");
@@ -104,7 +105,7 @@ public class HelloApplication extends Application {
 
 
     }
-    public static void testSuscriptorUnico () {
+    public static void testSuscriptorUnico() {
         System.out.println("running suscriptor Unico");
 
         Persona p0 = new Persona("Bart Simpson","1234567890");
@@ -132,7 +133,10 @@ public class HelloApplication extends Application {
             System.out.println("Buzon: "+i);
             colBuz.get(i).listarSuscriptores();
         }
-
     }
 }
+
+
+
+
 
