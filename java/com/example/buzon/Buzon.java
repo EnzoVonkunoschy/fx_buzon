@@ -68,11 +68,11 @@ public class Buzon {
     }
 
     public void agregarSuscriptor(Persona persona) {
-        if (persona.isSuscripto()) {
+        if (persona.getSuscriptor()) {
             System.out.println(persona.getNombre() + " ya está suscripto.");
         } else {
             suscriptores.add(persona);
-            persona.suscripto(true);
+            persona.setSuscriptor(true);
             System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
         }
     }
