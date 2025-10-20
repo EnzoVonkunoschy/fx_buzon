@@ -27,11 +27,11 @@ public class Buzon {
 
     public ArrayList<Mensaje> retirarMensajes(Persona destinatario) {
         ArrayList<Mensaje> mensajesARetirar = new ArrayList<>();
-       // for (Mensaje mensaje : mensajes) {
-       //     if (mensaje.getDestinatario().equals(destinatario)) {
-       //         mensajesARetirar.add(mensaje);
-       //     }
-       // }
+        // for (Mensaje mensaje : mensajes) {
+        //     if (mensaje.getDestinatario().equals(destinatario)) {
+        //         mensajesARetirar.add(mensaje);
+        //     }
+        // }
         Iterator<Mensaje> iterador = mensajes.iterator();
         while (iterador.hasNext()) {
             Mensaje mensaje = iterador.next();
@@ -58,32 +58,32 @@ public class Buzon {
 
 
     public void listarMensajes() {
-        System.out.println("--- Buzón -------------------");
+        System.out.println("Mensajes:");
         for (Mensaje mensaje : mensajes) {
-            System.out.println("Destinatario: "+mensaje.getDestinatario()+
-                    "Remitente: "+mensaje.getRemitente()+
-                    "Texto:     "+mensaje.getTexto());
+            System.out.println(mensaje);
         }
         System.out.println("----------------------------");
     }
 
     public void agregarSuscriptor(Persona persona) {
-        for (Persona p : suscriptores) {
-            if (p.equals(persona)) {
-                System.out.println(persona.getNombre() + " ya está suscripto.");
-                return;
-            }
+        if (persona.getSuscripto()) {
+            System.out.println(persona.getNombre() + " ya está suscripto.");
+        } else {
+            suscriptores.add(persona);
+            persona.setSuscripto(true);
+            System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
         }
-        suscriptores.add(persona);
-        System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
     }
 
     public void eliminarSuscriptor(Persona persona) {
-        suscriptores.remove(persona);
-        System.out.println(persona + " fue eliminado como suscriptor");
+        if(suscriptores.remove(persona)) {
+            persona.setSuscripto(false);
+            System.out.println(persona + " fue eliminado como suscriptor");
+        }
     }
 
     public void listarSuscriptores() {
+        System.out.println("Suscriptores:");
         for (Persona p : suscriptores) {
             System.out.println(p);
         }
@@ -103,4 +103,3 @@ public class Buzon {
         return siguienteBuzon;
     }
 }
-
