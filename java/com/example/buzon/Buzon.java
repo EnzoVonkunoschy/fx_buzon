@@ -58,31 +58,32 @@ public class Buzon {
 
 
     public void listarMensajes() {
-        System.out.println("--- Buzón -------------------");
+        System.out.println("Mensajes:");
         for (Mensaje mensaje : mensajes) {
-            System.out.println("Destinatario: "+mensaje.getDestinatario()+
-                    "Remitente: "+mensaje.getRemitente()+
-                    "Texto:     "+mensaje.getTexto());
+            System.out.println(mensaje);
         }
         System.out.println("----------------------------");
     }
 
     public void agregarSuscriptor(Persona persona) {
-        if (persona.isSuscripto()) {
+        if (persona.getSuscripto()) {
             System.out.println(persona.getNombre() + " ya está suscripto.");
         } else {
             suscriptores.add(persona);
-            persona.suscripto(true);
+            persona.setSuscripto(true);
             System.out.println(persona.getNombre() + " fue agregado como suscriptor.");
         }
     }
 
     public void eliminarSuscriptor(Persona persona) {
-        suscriptores.remove(persona);
-        System.out.println(persona + " fue eliminado como suscriptor");
+        if(suscriptores.remove(persona)) {
+            persona.setSuscripto(false);
+            System.out.println(persona + " fue eliminado como suscriptor");
+        }
     }
 
     public void listarSuscriptores() {
+        System.out.println("Suscriptores:");
         for (Persona p : suscriptores) {
             System.out.println(p);
         }

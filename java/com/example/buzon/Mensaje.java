@@ -33,6 +33,6 @@ public class Mensaje {
 
     @Override
     public String toString() {
-        return "Remitente= " + remitente + ", Destinatario= " + destinatario + ", Texto= " + texto + "\n";
+        return "--> Mensaje <--\nRemitente= " + remitente + "\nDestinatario= " + destinatario + "\nTexto= " + texto + "\n";
     }
 }

@@ -22,11 +22,11 @@ public class Persona {
         return this.nombre + " " + this.cuit;
     }
 
-    public boolean isSuscripto(){
-        return suscripto;
+    public boolean getSuscripto(){
+        return this.suscripto;
     }
 
-    public void suscripto(boolean suscripto) {
+    public void setSuscripto(boolean suscripto) {
         this.suscripto = suscripto;
     }
 }
