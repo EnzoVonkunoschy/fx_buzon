@@ -8,6 +8,7 @@ public class Buzon {
     ArrayList<Mensaje> mensajes = new ArrayList<>();
     private Buzon siguienteBuzon; // ✅ Nuevo atributo
     private static int totalBuzones = 0; //contadoor de buzones
+    final Persona NoReply = new Persona("NoReply", null);
 
     public Buzon() {
         totalBuzones++; // cada vez que se crea un buzón se incrementa
@@ -47,13 +48,28 @@ public class Buzon {
         if (suscriptores.contains(mensaje.getDestinatario())) {
             mensajes.add(mensaje);
             System.out.println("Mensaje añadido en este buzón: persona suscripta");
+            crearNoReply(mensaje);
         } else if (siguienteBuzon != null && mensaje.getContadorBuzones() < Buzon.getTotalBuzones()) {
             mensaje.incrementarContador(); // se suma en el contador
             System.out.println("Destinatario no suscripto en este buzón. Pasando al siguiente buzón...");
             siguienteBuzon.recibirMensaje(mensaje);
         } else {
             System.out.println("Mensaje no añadido: se alcanzó el límite de buzones o no hay siguiente.");
+          }
+    }
+
+    public void recibirNoReply(Mensaje mensaje){
+        if (suscriptores.contains(mensaje.getDestinatario())) {
+            mensajes.add(mensaje);
+        } else if (siguienteBuzon != null && mensaje.getContadorBuzones() < Buzon.getTotalBuzones()) {
+            mensaje.incrementarContador(); // se suma en el contador
+            siguienteBuzon.recibirNoReply(mensaje);
         }
+    }
+
+    private void crearNoReply(Mensaje mensaje){
+        Mensaje noreply = new Mensaje(NoReply, mensaje.getRemitente(), "Mensaje para " + mensaje.getDestinatario() + " fue entregado");
+        recibirNoReply(noreply);
     }
 
 
