@@ -101,7 +101,7 @@ public class HelloApplication extends Application {
         colBuz.get(3).recibirMensaje(m0);
 
         Mensaje confirmacion = new Mensaje(p1,p0,"Mensaje recibido por "+p1.getNombre());
-        colBuz.get(0).recibirMensaje(confirmacion);  //comentar esta línea al implementar incremento.
+        //colBuz.get(0).recibirMensaje(confirmacion);  //comentar esta línea al implementar incremento.
 
 
         estadoBuzon_es(colBuz);
