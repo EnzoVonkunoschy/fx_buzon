@@ -5,6 +5,7 @@ public class Mensaje {
     private Persona destinatario;
     private String texto;
     private int contadorBuzones = 0; // atributo de contador
+    private boolean bandera = false;
 
     public void incrementarContador() {
         contadorBuzones++;
@@ -31,6 +32,13 @@ public class Mensaje {
         return this.texto;
     }
 
+    public boolean bandera() {
+        return bandera;
+    }
+
+    public void setBandera(boolean bandera) {
+        this.bandera = bandera;
+    }
     @Override
     public String toString() {
         return "--> Mensaje <--\nRemitente= " + remitente + "\nDestinatario= " + destinatario + "\nTexto= " + texto + "\n";

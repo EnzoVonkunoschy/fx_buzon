@@ -47,6 +47,18 @@ public class Buzon {
         if (suscriptores.contains(mensaje.getDestinatario())) {
             mensajes.add(mensaje);
             System.out.println("Mensaje añadido en este buzón: persona suscripta");
+            if (!mensaje.bandera()){
+                Persona remitente = mensaje.getRemitente();
+                Persona destinatario = mensaje.getDestinatario();
+
+                String visto = "Te clavo el visto "+ destinatario.getNombre();
+                Mensaje confirmacion = new Mensaje(destinatario,remitente,visto);
+                confirmacion.setBandera(true);
+                if (siguienteBuzon != null) {
+                    siguienteBuzon.recibirMensaje(confirmacion);
+                }
+            }
+
         } else if (siguienteBuzon != null && mensaje.getContadorBuzones() < Buzon.getTotalBuzones()) {
             mensaje.incrementarContador(); // se suma en el contador
             System.out.println("Destinatario no suscripto en este buzón. Pasando al siguiente buzón...");
