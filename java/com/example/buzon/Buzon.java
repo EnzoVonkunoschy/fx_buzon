@@ -44,15 +44,33 @@ public class Buzon {
     }
 
     public void recibirMensaje(Mensaje mensaje) {
-        if (suscriptores.contains(mensaje.getDestinatario())) {
+        Persona remitente = mensaje.getRemitente();
+        Persona destinatario = mensaje.getDestinatario();
+
+        if (suscriptores.contains(destinatario)) {
             mensajes.add(mensaje);
-            System.out.println("Mensaje añadido en este buzón: persona suscripta");
+            System.out.println("Mensaje añadido: destinatario suscripto en este buzón.");
+
+            Mensaje confirmacion = new Mensaje(destinatario, remitente,
+                    "Confirmación: mensaje para " + destinatario.getNombre() + " recibido correctamente.");
+
+            Buzon buzonActual = this;
+            for (int i = 0; i < Buzon.getTotalBuzones(); i++) {
+                if (buzonActual.suscriptores.contains(remitente)) {
+                    buzonActual.mensajes.add(confirmacion);
+                    System.out.println("Confirmación entregada a " + remitente.getNombre());
+                    return;
+                }
+                buzonActual = buzonActual.getSiguienteBuzon();
+            }
+
         } else if (siguienteBuzon != null && mensaje.getContadorBuzones() < Buzon.getTotalBuzones()) {
-            mensaje.incrementarContador(); // se suma en el contador
-            System.out.println("Destinatario no suscripto en este buzón. Pasando al siguiente buzón...");
+            mensaje.incrementarContador();
+            System.out.println("Destinatario no suscripto aquí. Pasando al siguiente buzón...");
             siguienteBuzon.recibirMensaje(mensaje);
+
         } else {
-            System.out.println("Mensaje no añadido: se alcanzó el límite de buzones o no hay siguiente.");
+            System.out.println("Mensaje no añadido: límite de buzones alcanzado o no hay siguiente.");
         }
     }
 
