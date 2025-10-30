@@ -47,14 +47,39 @@ public class Buzon {
         if (suscriptores.contains(mensaje.getDestinatario())) {
             mensajes.add(mensaje);
             System.out.println("Mensaje añadido en este buzón: persona suscripta");
+            Persona remitente = mensaje.getRemitente();
+            Buzon cursor = this;
+            boolean remitenteNotificado = false;
+            while (cursor != null) {
+                if (cursor.suscriptores.contains(remitente)) {
+                    Mensaje notiRemitente = new Mensaje(
+                            mensaje.getDestinatario(),
+                            remitente,
+                            "Tu mensaje a " + mensaje.getDestinatario().getNombre() + " fue entregado correctamente."
+                    );
+                    cursor.mensajes.add(notiRemitente);
+                    System.out.println("[Sistema] Se notificó a " + remitente.getNombre() +
+                            " que su mensaje fue entregado a " + mensaje.getDestinatario().getNombre() + ".");
+                    remitenteNotificado = true;
+                    break;
+                }
+                cursor = cursor.getSiguienteBuzon();
+                if (cursor == this) break;
+            }
+
+            if (!remitenteNotificado) {
+                System.out.println("No se encontró buzón del remitente (" + remitente.getNombre() + "). No se pudo notificarle.");
+            }
+
         } else if (siguienteBuzon != null && mensaje.getContadorBuzones() < Buzon.getTotalBuzones()) {
-            mensaje.incrementarContador(); // se suma en el contador
+            mensaje.incrementarContador();
             System.out.println("Destinatario no suscripto en este buzón. Pasando al siguiente buzón...");
             siguienteBuzon.recibirMensaje(mensaje);
         } else {
             System.out.println("Mensaje no añadido: se alcanzó el límite de buzones o no hay siguiente.");
         }
     }
+
 
 
     public void listarMensajes() {
